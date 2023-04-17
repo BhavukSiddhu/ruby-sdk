@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beautiful Background Image</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* set the height of the background image to cover the viewport */
+        body {
+            background: url("https://preview.colorlib.com/theme/bootstrap/website-menu-03/images/hero_1.jpg.webp") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            height: 100vh;
+        }
+        
+        /* set the navbar to be transparent */
+        .navbar {
+            background-color: transparent;
+        }
+        
+        /* set the navbar text color to white */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+        
+        /* set the active navbar link to have a white background */
+        .navbar-dark .navbar-nav .nav-link.active {
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-tansparent fixed-top">
+        <a class="navbar-brand" href="#">My App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <% if logged_in? %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="<%= logout_path %>">
+                      <strong>Logout</strong>
+                    </a>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <a  class="nav-link" href="<%= auth_path %>">
+                      <strong>Log in</strong>
+                    </a>
+                  </li>
+                <% end %>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- main content -->
+    <div class="container" style="width: 100%;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Welcome to My App</h1>
+               <%= yield %>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
